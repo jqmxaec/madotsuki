@@ -1,0 +1,14 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="icons">
+        <file alias="go_back">go_back.svg</file>
+        <file alias="new_record">new_record.svg</file>
+        <file alias="view_record">view_record.svg</file>
+        <file alias="edit_record">edit_record.svg</file>
+        <file alias="delete_record">delete_record.svg</file>
+        <file alias="close_record_view_screen">close_record_view_screen.svg</file>
+        <file alias="save_record">save_record.svg</file>
+        <file alias="select_record">select_record.svg</file>
+        <file alias="manage_record">manage_record.svg</file>
+    </qresource>
+</RCC>
