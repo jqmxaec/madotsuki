@@ -16,11 +16,12 @@ from mado.standard_inputs.dates import DateInput, DateTimeInput, TimeInput
 from mado.standard_inputs.lists import ListInput
 from mado.standard_inputs.selectables import ComboInput, EnumInput, RelationInput
 from mado.standard_inputs.tables import TableInput, DelegatedTableInput
-from mado.standard_inputs.text import TextInput, PasswordInput, MultilineTextInput
+from mado.standard_inputs.text import TextInput, PasswordInput, MultilineTextInput, NumberInput
 from mado.utils import set_app_name
 from mado.widgets.misc import make_button
 
 import mado.resources.resources
+
 
 class EnumRadioTest(Enum):
     quick = "Вариант один"
@@ -92,6 +93,10 @@ def make_main_screen(window: WindowWidget) -> QtWidgets.QWidget:
     def on_table_input(pos: Tuple[int, int], text: str) -> None:
         print("Table edited, pos: ", pos, ", text: ", text, sep="")
 
+    @QtCore.pyqtSlot(int)
+    def on_number_input(number: int) -> None:
+        print("Number edited, number:", number)
+
     f.add("text_input", TextInput(text_edited=on_text_input), "TextInput")
     f.add("password_input", PasswordInput(text_edited=on_password_input), "PasswordInput")
     f.add("multiline_input", MultilineTextInput(text_edited=on_multiline_text_input), "MultilineTextInput")
@@ -102,7 +107,9 @@ def make_main_screen(window: WindowWidget) -> QtWidgets.QWidget:
     f.add("enum_radio_input", EnumRadioInput(enum=EnumRadioTest, radio_selected=on_enum_radio_input), "EnumRadioInput")
     f.add("bool_input", BoolInput(label="Lorem ipsum", mark_changed=on_bool_input), "BoolInput")
     f.add("combo_input", ComboInput(variants=combo_input_test, variant_selected=on_combo_input), "ComboInput")
-    f.add("enum_input", EnumInput(enum=EnumTest, variant_selected=on_enum_input, no_initial_selection=True))
+    f.add("enum_input", EnumInput(enum=EnumTest, variant_selected=on_enum_input, no_initial_selection=True),
+          "EnumInput")
+    f.add("number_input", NumberInput(number_edited=on_number_input, values_range=(0, 333)), "NumberInput")
 
     f.add("relation_input", RelationInput(EventsEntityConfig()), "RelationInput")
     f.add("table_input", TableInput(cell_edited=on_table_input))

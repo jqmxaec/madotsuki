@@ -56,6 +56,7 @@ def make_icon_button(flat: bool = False, icon: QtGui.QIcon = None,
         w.setIconSize(QtCore.QSize(icon_size, icon_size))
 
     w.setFlat(flat)
+    w.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
 
     return w
 

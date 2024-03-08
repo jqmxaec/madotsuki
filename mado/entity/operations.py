@@ -94,7 +94,7 @@ class BasicRecordCreator(RecordCreator, QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def on_create_button_clicked(self):
-        value = self.config.to_database(self.form_body.get_value())
+        value = self.form_body.get_value()
 
         err = self.config.validate_record(value)
         if err is not None:
@@ -103,7 +103,7 @@ class BasicRecordCreator(RecordCreator, QtWidgets.QWidget):
             return
 
         try:
-            id_ = self.config.repository.insert(value)
+            id_ = self.config.repository.insert(self.config.to_database(value))
             self.record_created.emit(id_, value)
 
             make_info(self, "Запись создана", "Успешно").exec()
@@ -163,7 +163,7 @@ class BasicRecordManager(RecordManager, QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def on_save_button_clicked(self) -> None:
-        value = self.config.to_database(self.form_body.get_value())
+        value = self.form_body.get_value()
 
         err = self.config.validate_record(value)
         if err is not None:
@@ -172,7 +172,7 @@ class BasicRecordManager(RecordManager, QtWidgets.QWidget):
             return
 
         try:
-            self.config.repository.update(self.record_id, value)
+            self.config.repository.update(self.record_id, self.config.to_database(value))
             self.record_edited.emit(value)
 
             make_info(self, "Запись изменена", "Успешно").exec()

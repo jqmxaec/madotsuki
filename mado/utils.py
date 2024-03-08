@@ -1,9 +1,10 @@
 from __future__ import annotations
 import sys
 import os
-from typing import Tuple, Callable, TYPE_CHECKING
+from typing import Tuple, Callable, TYPE_CHECKING, Dict
 
 from PyQt5 import QtWidgets
+from sqlalchemy import RowMapping
 
 if TYPE_CHECKING:
     from mado.application_window import ApplicationWindow
@@ -73,3 +74,7 @@ def make_info(parent: any, msg: str, title: str = None) -> QtWidgets.QMessageBox
         box.setWindowTitle(title)
 
     return box
+
+
+def row_mapping_to_dict(row: RowMapping) -> Dict[str, any]:
+    return {key: value for key, value in row.items()}
