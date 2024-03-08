@@ -84,10 +84,15 @@ class MultilineTextInput(InputBase, QtWidgets.QTextEdit):
 
 
 class NumberInput(InputBase, QtWidgets.QSpinBox):
-    def __init__(self, number_edited: QtCore.pyqtSlot = None, values_range: Tuple[int, int] = (0, 99)):
+    def __init__(self, number_edited: QtCore.pyqtSlot = None, values_range: Tuple[int, int] = (0, 99),
+                 default_value: int = None):
         super().__init__()
 
         self.setRange(*values_range)
+
+        if default_value is None:
+            default_value = values_range[0]
+        self.setValue(default_value)
 
         if number_edited:
             self.valueChanged.connect(number_edited)
