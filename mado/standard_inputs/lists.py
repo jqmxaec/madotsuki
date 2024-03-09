@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Type, Callable, List
 
 from mado.input_base import InputBase

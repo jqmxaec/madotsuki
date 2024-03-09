@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from functools import singledispatchmethod
-from typing import Dict, Callable, Type, TYPE_CHECKING
+from typing import Dict, Callable, Type, TYPE_CHECKING, Union
 
 from PyQt5 import QtWidgets, QtCore
 
@@ -92,4 +91,4 @@ class ApplicationWindow(Window, QtWidgets.QMainWindow):
         screen.reconfigure()
 
 
-WindowWidget = Window | QtWidgets.QWidget
+WindowWidget = Union[Window, QtWidgets.QWidget]

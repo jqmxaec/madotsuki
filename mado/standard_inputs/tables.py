@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import List
 
 from PyQt5 import QtWidgets, QtGui, QtCore

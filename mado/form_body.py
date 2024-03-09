@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Dict, OrderedDict
+from typing import Dict, OrderedDict, Union
 
 from PyQt5 import QtWidgets, QtCore
 
@@ -20,7 +20,7 @@ class FormBody(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-        self.widgets = OrderedDict[str, InputBase | QtWidgets.QWidget]()
+        self.widgets = OrderedDict[str, Union[InputBase, QtWidgets.QWidget]]()
         self._labels = dict()
         self._readonly = False
         self._drawn = False

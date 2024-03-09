@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(
     name="madotsuki",
-    version="1.3",
+    version="1.4",
     description="Библиотека для построения графических CRUD-интерфейсов",
     author="jqmxaec",
     packages=find_packages(),
